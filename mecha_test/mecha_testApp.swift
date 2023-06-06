@@ -11,7 +11,8 @@ import SwiftUI
 struct mecha_testApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            LaunchScreen()
         }
     }
 }

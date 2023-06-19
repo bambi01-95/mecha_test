@@ -6,83 +6,78 @@
 //
 
 import SwiftUI
-
+// 高さと横幅を取得する
 struct testView: View {
-    // 送る側     /iPhone側
-    @State private var from_ipaddr = ""
-    @State private var from_portnum = ""
-    // 受け取りがわ/RasPi
-    @State private var to_ipaddr = ""
-    @State private var to_portnum = ""
-    
     var body: some View {
-        NavigationView {
-            VStack{
-                HStack{
-                    VStack{
-                        Text("送信側 (iPhone/iPad)")
-                        TextField("IP address", text: $from_ipaddr)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.numberPad)
-                        TextField("Prot number", text: $from_ipaddr)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.numberPad)//number only
-                        Button {
-                            //save data action here
-                        } label: {
-                            Text("決定")
-                                .foregroundColor(Color.white)
-                                .padding(.horizontal, 12)
-                        }
-                        .background(Color.black)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(lineWidth: 1)
-                        )
-
-                    }//L VStack
-                    VStack{
-                        Text("受信側　(RasPi/PC)")
-                        TextField("IP address", text: $to_ipaddr)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.numberPad)
-                        TextField("Port number", text: $to_ipaddr)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.numberPad)
-                        Button {
-                            //save data action here
-                        } label: {
-                            Text("決定")
-                                .foregroundColor(Color.white)
-                                .padding(.horizontal, 12)
-                        }
-                        .background(Color.black)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(lineWidth: 1)
-                        )
-                    }//R VStack
-                    
-                }//HStack
-                //bottom button
-                NavigationLink(destination: test()) {
-                    Text("START")
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(lineWidth: 1)
-                        )
+        let bounds = UIScreen.main.bounds
+        let Swidth  = bounds.width
+        let Sheight = bounds.height
+        let buttonSize = bounds.width / 11
+        let mid_b = bounds.width / 27
+        
+        ZStack{
+            HStack {
+                Text("幅:\(Int(Swidth))")
+                    .font(.title)
+                    .padding()
+                Text("高さ:\(Int(Sheight))")
+                    .font(.title)
+                    .padding()
+            }//H
+            HStack{
+                Button {
+                    print("gray")
+                } label: {
+                    Image("gray_button")
+                        .resizable()
+                        .frame(width: buttonSize,height: buttonSize)
                 }
+                .offset(x:-Swidth / 4,y:Sheight / 6)
+                VStack{
+                    Button {
+                        print("gray")
+                    } label: {
+                        Image("green_button")
+                            .resizable()
+                            .frame(width: buttonSize,height: buttonSize)
+                    }
+                    HStack{
+                        Button {
+                            print("gray")
+                        } label: {
+                            Image("red_button")
+                                .resizable()
+                                .frame(width: buttonSize,height: buttonSize)
+                        }
+                        .padding(.trailing, mid_b)
+                        Button {
+                            print("gray")
+                        } label: {
+                            Image("blue_button")
+                                .resizable()
+                                .frame(width: buttonSize,height: buttonSize)
+                        }
+                        .padding(.leading, mid_b)
+                    }
+                    Button {
+                        print("gray")
+                    } label: {
+                        ZStack{
+                            Image("yellow_button")
+                                .resizable()
+                                .frame(width: buttonSize,height: buttonSize)
+                            Text("hell")
+                        }
+                    }
+                    
+                }
+                .offset(x:Swidth / 4,y:Sheight / 6)
+
             }
-        }
+        }//Z
     }
 }
 
-struct test: View {
-    var body: some View{
-        Text("ここにコントローラが来ます")
-    }
-}
 
 struct testView_Previews: PreviewProvider {
     static var previews: some View {

@@ -67,7 +67,7 @@ struct todolist: View {
     }
 }
 
-struct todolist_Previews: PreviewProvider {
+struct todolist_Preview: PreviewProvider {
     static var previews: some View {
         todolist()
     }

@@ -12,7 +12,7 @@ struct mecha_testApp: App {
     var body: some Scene {
         WindowGroup {
             //ContentView()
-            LaunchScreen()
+            LaunchScreen()//スプラッシュスクリーン（app起動時の画面）
         }
     }
 }
